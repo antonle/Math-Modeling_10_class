@@ -5,7 +5,7 @@ from matplotlib.animation import ArtistAnimation
 
 seconds_in_year = 365 * 24 * 60 * 60
 seconds_in_day = 24 * 60 * 60
-years = 2
+years = 20
 t = np.arange(0, years*seconds_in_year, seconds_in_day)
 
 def move_func(s, t):
@@ -49,18 +49,18 @@ ma = m1 + m2 + m3
     
 x10 = 15 * 149 * 10 ** 9
 v_x10 = 0
-y10 = 15 * 149 * 10 ** 9
-v_y10 = (G * ma / (x10 / 2)) ** 0.5 
+y10 = 0
+v_y10 = 10000
 
 x20 = - 149 * 10 ** 9
 v_x20 = 1
 y20 = 0
-v_y20 = (G * ma / (- x20 / 3)) ** 0.5
+v_y20 = 15000   
 
 x30 = 0 
 v_x30 = 15000
 y30 = 149 * 10 ** 9
-v_y30 = (G * ma) ** 0.5
+v_y30 = 20000
 
 s0 = (x10, v_x10, y10, v_y10,
       x20, v_x20, y20, v_y20,
