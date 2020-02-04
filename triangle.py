@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import ArtistAnimation
 from scipy.integrate import odeint
 
-t = np.arange(10 ** (-7), 10 ** (-6), 10 ** (-7))
+years = 0.005
+t = np.arange(0, years * 10 ** (-7), 10 ** (-11))
 
 def move_func(s, t):
     (x1, v_x1, y1, v_y1,
@@ -37,29 +38,31 @@ def move_func(s, t):
     return (dxdt1, dv_xdt1, dydt1, dv_ydt1,
             dxdt2, dv_xdt2, dydt2, dv_ydt2,
             dxdt3, dv_xdt3, dydt3, dv_ydt3)
+   
+l = 0.01    
     
 k = 9 * 10 ** 9
-q1 = 10 ** (-14)
-q2 = 10 ** (-14)
-q3 = - 10 ** (-14)
+q1 = 1.6 * 10 ** (-14)
+q2 = 1.6 * 10 ** (-14)
+q3 = -1.6 * 10 ** (-14)
 m1 = 9 * 10 ** (-31)
 m2 = 9 * 10 ** (-31)
 m3 = 9 * 10 ** (-31)
 
-x10 = 4 * 10 ** (-3)
-v_x10 = 10 ** 6
+x10 = 0.5 * l
+v_x10 = 0
 y10 = 0
 v_y10 = 0
 
-x20 = - 4 * 10 ** (-3)
-v_x20 = 10 ** 6 
-y20 = 0
+x20 = 0
+v_x20 = 0
+y20 = (l ** 2 - (0.5 * l) ** 2) ** 0.5
 v_y20 = 0
 
-x30 = 0
+x30 = -0.5 * l
 v_x30 = 0
-y30 = 4 * 3 ** 0.5 * 10 ** (-3)
-v_y30 = 10 ** 6
+y30 = 0
+v_y30 = 0
 
 s0 = (x10, v_x10, y10, v_y10,
       x20, v_x20, y20, v_y20,
@@ -83,7 +86,7 @@ for i in range(len(t)):
     bodies.append([body1, body1_line, body2, body2_line, body3, body3_line])
     
 ani = ArtistAnimation(fig, bodies, interval=50)
-plt.axis('axis')
+plt.axis('equal')
 ani.save('ani.gif')    
     
     
